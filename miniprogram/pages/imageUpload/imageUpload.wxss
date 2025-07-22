@@ -1,0 +1,251 @@
+/* pages/imageUpload/imageUpload.wxss */
+.container {
+  padding: 40rpx 30rpx;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+
+/* 图片上传区域 */
+.image-upload-area {
+  margin-bottom: 80rpx;
+}
+
+.image-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.image-box {
+  position: relative;
+  width: 320rpx;
+  height: 320rpx;
+  border: 4rpx dashed #ddd;
+  border-radius: 20rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.image-box:active {
+  transform: scale(0.95);
+  border-color: #007aff;
+}
+
+.placeholder-box {
+  border: none;
+  background-color: transparent;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.camera-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.6;
+}
+
+.placeholder-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background-color: #ff4757;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* 分析按钮区域 */
+.analyze-section {
+  margin-bottom: 60rpx;
+}
+
+.analyze-btn {
+  width: 100%;
+  height: 88rpx;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.analyze-btn.active {
+  background-color: white;
+  color: #333;
+  border: 2rpx solid #ddd;
+}
+
+.analyze-btn.disabled {
+  background-color: #e9ecef;
+  color: #adb5bd;
+}
+
+.analyze-btn:active.active {
+  transform: scale(0.98);
+}
+
+/* 上传进度 */
+.upload-progress {
+  margin-top: 40rpx;
+  padding: 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.progress-item {
+  margin-bottom: 20rpx;
+}
+
+.progress-item:last-child {
+  margin-bottom: 0;
+}
+
+.progress-item text {
+  font-size: 28rpx;
+  color: #333;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8rpx;
+  background-color: #e9ecef;
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s ease;
+}
+
+/* 结果显示区域 */
+.results-section {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.results-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.result-item {
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background-color: #f8f9fa;
+  border-radius: 16rpx;
+}
+
+.result-item:last-child {
+  margin-bottom: 0;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.result-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.result-status {
+  font-size: 26rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-weight: bold;
+}
+
+.result-status.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.result-status.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.result-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-id {
+  font-size: 24rpx;
+  color: #007aff;
+  margin-bottom: 8rpx;
+  font-family: monospace;
+}
+
+.result-info {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 5rpx;
+}
+
+.result-error {
+  font-size: 26rpx;
+  color: #dc3545;
+  padding: 10rpx;
+  background-color: #fff5f5;
+  border-radius: 8rpx;
+  border-left: 4rpx solid #dc3545;
+}

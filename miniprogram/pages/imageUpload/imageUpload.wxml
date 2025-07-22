@@ -1,0 +1,88 @@
+<!--pages/imageUpload/imageUpload.wxml-->
+<view class="container">
+  <view class="title">图片分析</view>
+  <view class="subtitle">请选择或拍摄三张图片进行分析</view>
+  
+  <!-- 图片上传区域 -->
+  <view class="image-upload-area">
+    <view class="image-row">
+      <!-- 第一个图片框 -->
+      <view class="image-box" data-index="0" bindtap="selectImage">
+        <image wx:if="{{imageList[0]}}" src="{{imageList[0]}}" class="uploaded-image" mode="aspectFill"></image>
+        <view wx:else class="placeholder">
+          <image src="/imgs/camera-icon.svg" class="camera-icon" mode="widthFix"></image>
+          <text class="placeholder-text">点击添加图片</text>
+        </view>
+        <view wx:if="{{imageList[0]}}" class="delete-btn" data-index="0" bindtap="deleteImage">×</view>
+      </view>
+      
+      <!-- 第二个图片框 -->
+      <view class="image-box" data-index="1" bindtap="selectImage">
+        <image wx:if="{{imageList[1]}}" src="{{imageList[1]}}" class="uploaded-image" mode="aspectFill"></image>
+        <view wx:else class="placeholder">
+          <image src="/imgs/camera-icon.svg" class="camera-icon" mode="widthFix"></image>
+          <text class="placeholder-text">点击添加图片</text>
+        </view>
+        <view wx:if="{{imageList[1]}}" class="delete-btn" data-index="1" bindtap="deleteImage">×</view>
+      </view>
+    </view>
+    
+    <view class="image-row">
+      <!-- 第三个图片框 -->
+      <view class="image-box" data-index="2" bindtap="selectImage">
+        <image wx:if="{{imageList[2]}}" src="{{imageList[2]}}" class="uploaded-image" mode="aspectFill"></image>
+        <view wx:else class="placeholder">
+          <image src="/imgs/camera-icon.svg" class="camera-icon" mode="widthFix"></image>
+          <text class="placeholder-text">点击添加图片</text>
+        </view>
+        <view wx:if="{{imageList[2]}}" class="delete-btn" data-index="2" bindtap="deleteImage">×</view>
+      </view>
+      
+      <!-- 空白占位，保持布局对称 -->
+      <view class="image-box placeholder-box"></view>
+    </view>
+  </view>
+  
+  <!-- 开始分析按钮 -->
+  <view class="analyze-section">
+    <button
+      class="analyze-btn {{hasImages ? 'active' : 'disabled'}}"
+      bindtap="startAnalyze"
+      disabled="{{!hasImages || isUploading}}"
+    >
+      <text wx:if="{{isUploading}}">上传中...</text>
+      <text wx:else>上传图片</text>
+    </button>
+    
+    <!-- 上传进度提示 -->
+    <view wx:if="{{uploadProgress.length > 0}}" class="upload-progress">
+      <view wx:for="{{uploadProgress}}" wx:key="index" class="progress-item">
+        <text>图片{{index + 1}}: {{item.status}}</text>
+        <view wx:if="{{item.progress}}" class="progress-bar">
+          <view class="progress-fill" style="width: {{item.progress}}%"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 上传结果显示 -->
+  <view wx:if="{{uploadResults.length > 0}}" class="results-section">
+    <view class="results-title">上传结果</view>
+    <view wx:for="{{uploadResults}}" wx:key="index" class="result-item">
+      <view class="result-header">
+        <text class="result-name">图片{{index + 1}}</text>
+        <text class="result-status {{item.success ? 'success' : 'error'}}">
+          {{item.success ? '成功' : '失败'}}
+        </text>
+      </view>
+      <view wx:if="{{item.success}}" class="result-details">
+        <text class="result-id">ID: {{item.id}}</text>
+        <text class="result-info">文件名: {{item.name}}</text>
+        <text class="result-info">大小: {{item.size}} bytes</text>
+      </view>
+      <view wx:else class="result-error">
+        <text>错误: {{item.message}}</text>
+      </view>
+    </view>
+  </view>
+</view>
